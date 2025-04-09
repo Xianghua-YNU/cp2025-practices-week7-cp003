@@ -2,9 +2,9 @@
 
 ## 一、实验信息
 
-- 小组名称：
-- 成员：
-- 实验日期：
+- 小组名称：CP003
+- 成员：5人
+- 实验日期：2025/4/9
 
 ---
 
@@ -25,15 +25,18 @@
 
 ### 问题1: 函数曲线 $\cos(\tan(\pi x))$ 绘制结果
 
-*(插入图片或截图并简要分析曲线特点)*
+![image](https://github.com/user-attachments/assets/63861c44-cc41-4b42-8655-637858d73644)
+
 
 ### 问题2: 隐函数曲线 $e^y + \frac{\cos x}{x} + y = 0$ 绘制结果
 
-*(插入图片或截图并简要分析隐函数曲线特点)*
+*![image](https://github.com/user-attachments/assets/a62aa0da-defe-4a26-9cb6-9a36eec98429)
+
 
 ### 问题3: 参数曲面绘制结果
 
-*(插入图片或截图并简要分析三维曲面的特点)*
+![image](https://github.com/user-attachments/assets/7911c987-a9d9-4a3b-9d26-3a7153461c5e)
+
 
 ---
 
