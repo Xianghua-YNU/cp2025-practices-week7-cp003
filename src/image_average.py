@@ -1,77 +1,70 @@
+# 导入必要的库
+# Import necessary libraries
 import numpy as np
 import scipy.ndimage as sim
 import matplotlib.pyplot as plt
 
 def create_small_filter():
-    """
-    创建3×3平均滤波器
-    
-    返回:
-        numpy.ndarray: 3×3的滤波器矩阵，每个元素值为1/9
-    """
-    # 学生需要在此实现代码
-    pass
+    """创建3×3平均滤波器
+    Create a 3×3 averaging filter"""
+    # 创建一个3×3的矩阵，所有元素值为1/9
+    # Create a 3×3 matrix with all elements set to 1/9
+    return np.ones((3, 3)) / 9
 
 def create_large_filter():
-    """
-    创建15×15平均滤波器
-    
-    返回:
-        numpy.ndarray: 15×15的滤波器矩阵，每个元素值为1/225
-    """
-    # 学生需要在此实现代码
-    pass
+    """创建15×15平均滤波器
+    Create a 15×15 averaging filter"""
+    # 创建一个15×15的矩阵，所有元素值为1/(15*15)
+    # Create a 15×15 matrix with all elements set to 1/(15*15)
+    return np.ones((15, 15)) / (15*15)
 
 def process_image(input_file):
+    """处理图像并保存结果
+    Process the image and save the results
+    
+    参数/Parameters:
+        input_file: 输入图像文件路径/path to the input image file
     """
-    处理图像并显示原始图像和滤波后的结果
+    # 读取图像
+    # Read the image
+    img = plt.imread(input_file)
     
-    参数:
-        input_file (str): 输入图像文件路径
-        
-    功能:
-        1. 读取输入图像
-        2. 创建3×3和15×15平均滤波器
-        3. 对图像应用两种滤波器
-        4. 显示原始图像和两种滤波结果对比
-        
-    学生任务:
-        完成以下步骤的实现代码
-    """
-    # 1. 读取图像 - 使用plt.imread()函数
-    img = None  # 学生需要实现
+    # 创建滤波器
+    # Create filters
+    small_filter = create_small_filter()
+    large_filter = create_large_filter()
     
-    # 2. 创建滤波器 - 调用已实现的函数
-    small_filter = None  # 学生需要调用create_small_filter()
-    large_filter = None  # 学生需要调用create_large_filter()
+    # 应用卷积
+    # Apply convolution
+    small_result = sim.convolve(img, small_filter)  # 使用3×3滤波器卷积/Convolve with 3×3 filter
+    large_result = sim.convolve(img, large_filter)   # 使用15×15滤波器卷积/Convolve with 15×15 filter
     
-    # 3. 应用卷积 - 使用sim.convolve()函数
-    small_result = None  # 学生需要实现小滤波器卷积读入的图像
-    large_result = None  # 学生需要实现大滤波器卷积读入的图像
-    
-    # 4. 显示结果 - 使用matplotlib绘制对比图
-    # 创建画布
-    plt.figure(figsize=(15, 5))
+    # 显示结果
+    # Display results
+    plt.figure(figsize=(15, 5))  # 创建15英寸宽5英寸高的图形/Create a figure 15 inches wide and 5 inches tall
     
     # 显示原始图像
+    # Display original image
     plt.subplot(1, 3, 1)
-    # 学生需要添加显示原始图像的代码
+    plt.imshow(img, cmap='gray')
     plt.title('Original Image')
     
     # 显示3×3滤波结果
+    # Display 3×3 filter result
     plt.subplot(1, 3, 2)
-    # 学生需要添加显示小滤波器结果的代码
+    plt.imshow(small_result, cmap='gray')
     plt.title('3×3 Filter Result')
     
     # 显示15×15滤波结果
+    # Display 15×15 filter result
     plt.subplot(1, 3, 3)
-    # 学生需要添加显示大滤波器结果的代码
+    plt.imshow(large_result, cmap='gray')
     plt.title('15×15 Filter Result')
     
-    # 调整布局并显示
-    plt.tight_layout()
-    plt.show()
+    plt.tight_layout()  # 自动调整子图参数/Automatically adjust subplot parameters
+    plt.show()          # 显示图形/Show the figure
 
 if __name__ == "__main__":
-    # 主程序入口 - 学生需要确保data/bwCat.tif文件存在
+    # 处理指定图像文件
+    # Process the specified image file
     process_image('data/bwCat.tif')
